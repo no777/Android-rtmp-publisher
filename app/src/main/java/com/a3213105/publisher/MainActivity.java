@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private static final String rtmp_url = "rtmp://pushdl-live.genshuixue.com/mgclient/test_gs";
+    private static final String rtmp_url = "rtmp://54.222.129.79/lycam/t9";
     private static final String TAG = "gs-main";
     private long presentationTimeUs;
     private VideoProcessor vp;
@@ -57,14 +57,14 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         if(false) {
-            ph = new PhotoProcessor(holder, 640, 480, 25, rotation);
+            ph = new PhotoProcessor(holder, 1280, 720, 30, rotation);
             ph.initPhoto();
             ph.startPhoto();
         } else {
             if(sender==null)
                 sender = new RTMPSender();
             if(vp==null)
-                vp = new VideoProcessor(holder,sender,640,480,25, rotation);
+                vp = new VideoProcessor(holder,sender,1280, 720, 30, rotation,5000);
             if(ap==null)
                 ap = new AudioProcessor(sender);
 
