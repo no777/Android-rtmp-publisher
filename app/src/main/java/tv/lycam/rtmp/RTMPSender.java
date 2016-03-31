@@ -296,7 +296,7 @@ public class RTMPSender {
                     statDropFrame(ksyFlv);
                 } else {
                     lastRefreshTime = System.currentTimeMillis();
-                    waiting(ksyFlv);
+//                    waiting(ksyFlv);
 //                    Log.e(TAG, "ksyFlv ts=" + ksyFlv.dts + " size=" + ksyFlv.size + " type=" + (ksyFlv.type == KSYFlvData.FLV_TYTPE_AUDIO ? "==ADO==" : "**VDO**"));
 //                    int w = _write(ksyFlv.byteBuffer, ksyFlv.byteBuffer.length);
                     if(ksyFlv.type == KSYFlvData.FLV_TYPE_VIDEO ){
