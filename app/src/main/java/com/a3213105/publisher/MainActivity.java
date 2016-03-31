@@ -2,7 +2,6 @@ package com.a3213105.publisher;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Surface;
@@ -13,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
+import tv.lycam.rtmp.RTMPSender;
+
 
 
 public class MainActivity extends AppCompatActivity  {
