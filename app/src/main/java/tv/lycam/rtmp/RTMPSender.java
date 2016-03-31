@@ -240,7 +240,7 @@ public class RTMPSender {
 
     public void stopSender() {
         loop = false;
-
+        _close();
         if (worker != null) {
             Log.i(TAG, "stop video worker thread");
             worker.interrupt();
@@ -329,7 +329,12 @@ public class RTMPSender {
                         btye_sended += ret;
                         //Log.i(TAG, "send rtmp packet total " + btye_sended);
                     }
-                    Thread.sleep(1);
+                    try {
+                        Thread.sleep(10);
+                    }
+                    catch (Exception e){
+
+                    }
 
 
 //                    statBitrate(w, ksyFlv.type);

@@ -1,4 +1,4 @@
-package com.a3213105.publisher;
+package tv.lycam.rtmp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

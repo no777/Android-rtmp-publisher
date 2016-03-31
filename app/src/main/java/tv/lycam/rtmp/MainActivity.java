@@ -1,4 +1,4 @@
-package com.a3213105.publisher;
+package tv.lycam.rtmp;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.a3213105.publisher.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
-import tv.lycam.rtmp.RTMPSender;
-
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -31,14 +32,14 @@ public class MainActivity extends AppCompatActivity  {
     private TextView bitrate;
     private View btn;
     private long lastByteSended = 0;
-    private PhotoProcessor ph;
+
 
 
     public MainActivity () {
         vp = null;
         ap = null;
         sender = null;
-        ph = null;
+
     }
 
     private void publish() {
@@ -57,11 +58,8 @@ public class MainActivity extends AppCompatActivity  {
             case Surface.ROTATION_270: rotation = 270; break;
         }
 
-        if(false) {
-            ph = new PhotoProcessor(holder, 1280, 720, 30, rotation);
-            ph.initPhoto();
-            ph.startPhoto();
-        } else {
+        if(true)
+        {
             if(sender==null)
                 sender = new RTMPSender();
             if(vp==null)
@@ -95,13 +93,11 @@ public class MainActivity extends AppCompatActivity  {
         }
         if(sender!=null)
             sender.stopSender();
-        if(ph!=null) {
-            ph.stopPhoto();
-        }
+
         vp = null;
         ap = null;
-        //sender = null;
-        ph = null;
+        sender = null;
+
     }
 
     private void startBitrateTimer() {
@@ -138,12 +134,7 @@ public class MainActivity extends AppCompatActivity  {
 
     public class PhotoOnClickListener implements View.OnClickListener {
         public void onClick(View v) {
-            if (ph!=null) {
-                if(ph.isStart())
-                    ph.takePhoto();
-                else
-                    ph.startPhoto();
-            } else if (sender == null) {
+            if (sender == null) {
                 Log.i(TAG, "start to publish");
                 publish();
                 TextView bv = (TextView)v;
@@ -153,6 +144,7 @@ public class MainActivity extends AppCompatActivity  {
                 stop();
                 TextView bv = (TextView)v;
                 bv.setText("start");
+
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.a3213105.publisher;
+package tv.lycam.rtmp;
 
 import android.hardware.Camera;
 import android.media.MediaCodec;
@@ -7,12 +7,13 @@ import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import android.util.Log;
 import android.view.SurfaceHolder;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import tv.lycam.rtmp.RTMPSender;
+
 /**
  * Created by a3213105 on 15/9/8.
  */
@@ -26,11 +27,11 @@ public class VideoProcessor extends CameraHelper {
 
     private int bitrate = 1000;
 
-    private int gop = 3;
+    private int gop = 1;
     private int complexity = 1;
 //    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR;
-//    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CQ;
-    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_VBR;
+    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CQ;
+//    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_VBR;
 
     private long vframes = 0;
     private int duration = 1000 / fps;
