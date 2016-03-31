@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.a3213105.publisher" >
+    package="tv.lycam.rtmp" >
 
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -21,6 +21,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="tv.lycam.rtmp.MainActivity"
+            android:keepScreenOn="true"
             android:label="RTMP-Publisher @ A3213105" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

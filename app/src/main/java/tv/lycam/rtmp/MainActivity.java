@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.a3213105.publisher.R;
+
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -254,6 +254,7 @@ public class VideoProcessor extends CameraHelper {
 
 
         MediaFormat vformat = MediaFormat.createVideoFormat(MediaFormat.MIMETYPE_VIDEO_AVC, width, height);
+//        color = MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420Flexible;
         vformat.setInteger(MediaFormat.KEY_COLOR_FORMAT, color);
         //vformat.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 0);
 
