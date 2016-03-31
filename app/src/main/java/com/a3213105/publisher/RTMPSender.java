@@ -28,14 +28,9 @@ public class RTMPSender {
         int pts = (int) (bi.presentationTimeUs);
         int size = bi.size;
         byte[] dst = null;
-        try {
-            dst = bb.array();
-        } catch (ReadOnlyBufferException e) {
 
-        } catch (Exception e) {
             dst = new byte[size];
             bb.get(dst);
-        }
         int ret = _write_rtmp_audio(dst, size, pts);
         if(ret < 0 ) {
             Log.w(TAG, "write audio data error:" + ret);
@@ -47,14 +42,10 @@ public class RTMPSender {
         int pts = (int) (bi.presentationTimeUs);
         int size = bi.size;
         byte[] dst = null;
-        try {
-            dst = bb.array();
-        } catch (ReadOnlyBufferException e) {
 
-        } catch (Exception e) {
             dst = new byte[size];
             bb.get(dst);
-        }
+
         //Log.i(TAG,"_write_rtmp_video pts=" + pts + " size=" + size);
         int ret = _write_rtmp_video(dst, size, pts);
         if(ret < 0 ) {
@@ -109,6 +100,13 @@ public class RTMPSender {
                 btye_sended += ret;
                 //Log.i(TAG, "send rtmp packet total " + btye_sended);
             }
+            try {
+                Thread.sleep(10);
+            }
+            catch (Exception e){
+
+            }
+
         }
     }
 

@@ -24,11 +24,14 @@ public class VideoProcessor extends CameraHelper {
     private MediaCodecInfo mci;
     private int color;
 
-    private int kbps = 200;
-    private int fps = 15;
-    private int gop = 2;
+    private int bitrate = 1000;
+
+    private int gop = 3;
     private int complexity = 1;
-    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR;
+//    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR;
+//    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CQ;
+    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_VBR;
+
     private long vframes = 0;
     private int duration = 1000 / fps;
 
@@ -42,10 +45,11 @@ public class VideoProcessor extends CameraHelper {
 
     private final RTMPSender sender;
 
-    public VideoProcessor(SurfaceHolder hd, RTMPSender ss, int w, int h, int f, int r) {
+    public VideoProcessor(SurfaceHolder hd, RTMPSender ss, int w, int h, int f, int r,int _bitrate) {
         super(hd,w,h,f,r);
         sender = ss;
         duration = 1000 / f;
+        bitrate = _bitrate;
     }
 
     private int getVideoEncoder() {
@@ -91,6 +95,8 @@ public class VideoProcessor extends CameraHelper {
 
         Log.i(TAG, String.format("vencoder %s choose color format 0x%x(%d)",
                 mci.getName(), matchedColorFormat, matchedColorFormat));
+
+//        return   MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420Flexible ;//COLOR_FormatSurface;
         return matchedColorFormat;
     }
 
@@ -250,17 +256,19 @@ public class VideoProcessor extends CameraHelper {
         vformat.setInteger(MediaFormat.KEY_COLOR_FORMAT, color);
         //vformat.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 0);
 
-        vformat.setInteger(MediaFormat.KEY_BIT_RATE, 1000 * kbps);
+        vformat.setInteger(MediaFormat.KEY_BIT_RATE, bitrate *1000);
         vformat.setInteger(MediaFormat.KEY_BITRATE_MODE, bitrat_mode);
 
         vformat.setInteger(MediaFormat.KEY_FRAME_RATE, fps);
         vformat.setInteger(MediaFormat.KEY_CAPTURE_RATE, fps);
 
         vformat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, gop);
-        vformat.setInteger(MediaFormat.KEY_COMPLEXITY,complexity);
+//        vformat.setInteger(MediaFormat.KEY_COMPLEXITY,complexity);
+//        format.setInteger(MediaFormat.KEY_COLOR_FORMAT,
+//                MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);
 
         encoder.configure(vformat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);
-
+//        encoder.createInputSurface();
 
         return 0;
     }
