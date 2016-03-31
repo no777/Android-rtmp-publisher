@@ -164,7 +164,7 @@ public class RTMPSender {
         // add video data
         synchronized (mutex) {
             if (recordPQueue.size() > statData.LEVEL1_QUEUE_SIZE) {
-                removeQueue(recordPQueue);
+//                removeQueue(recordPQueue);
 //                sendPoorNetworkMessage(NetworkMonitor.OnNetworkPoorListener.CACHE_QUEUE_MAX);
             }
             if (k == FROM_VIDEO) { //视频数据
@@ -292,9 +292,10 @@ public class RTMPSender {
                 } else if (ksyFlv.type == KSYFlvData.FLV_TYTPE_AUDIO) {
                     lastSendAudioTs = ksyFlv.dts;
                 }
-                if (needDropFrame(ksyFlv)) {
-                    statDropFrame(ksyFlv);
-                } else {
+//                if (needDropFrame(ksyFlv)) {
+//                    statDropFrame(ksyFlv);
+//                } else
+                {
                     lastRefreshTime = System.currentTimeMillis();
 //                    waiting(ksyFlv);
 //                    Log.e(TAG, "ksyFlv ts=" + ksyFlv.dts + " size=" + ksyFlv.size + " type=" + (ksyFlv.type == KSYFlvData.FLV_TYTPE_AUDIO ? "==ADO==" : "**VDO**"));

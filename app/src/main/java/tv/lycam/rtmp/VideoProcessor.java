@@ -27,7 +27,7 @@ public class VideoProcessor extends CameraHelper {
 
     private int bitrate = 1000;
 
-    private int gop = 1;
+    private int gop = 3;
     private int complexity = 1;
 //    private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR;
     private int bitrat_mode = MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CQ;
@@ -265,7 +265,7 @@ public class VideoProcessor extends CameraHelper {
         vformat.setInteger(MediaFormat.KEY_CAPTURE_RATE, fps);
 
         vformat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, gop);
-//        vformat.setInteger(MediaFormat.KEY_COMPLEXITY,complexity);
+        vformat.setInteger(MediaFormat.KEY_COMPLEXITY,complexity);
 //        format.setInteger(MediaFormat.KEY_COLOR_FORMAT,
 //                MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);
 
